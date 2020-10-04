@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3 col-xs-3">
+			<div>
+				<%= render file: "app/views/users/_info.html.erb" %>
+			</div>
+			<div>
+				<%= render 'books/post' %>
+			</div>
+		</div>
+		<div class="col-lg-9 col-xs-9">
+			<h2>Book detail</h2>
+			<table class="table">
+					<tr class="contents">
+							<td>
+								<%= link_to user_path(@user_show) do %>
+									<div>
+										<div><%= attachment_image_tag @user_show, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></div><div><%= @user_show.name %></div>
+									</div>
+								<% end %>
+							</td>
+							<td><%=link_to book_path(@book_show) do %><%= @book_show.title %><% end %></td>
+							<td><%= @book_show.body %></td>
+							<% if @book_show.user.id==current_user.id %>
+								<td>
+									<%= link_to "Edit", edit_book_path , class:"btn btn-success" %>
+								</td>
+								<td>
+									<%= link_to "Destroy", book_path, method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-danger" %>
+								</td>
+							<% end %>
+					</tr>
+			</table>
+		</div>
+	</div>
+</div>

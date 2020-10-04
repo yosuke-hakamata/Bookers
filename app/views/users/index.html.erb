@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3 col-xs-3">
+			<div>
+				<%= render file: "app/views/users/_info.html.erb" %>
+			</div>
+			<div>
+				<%= render file: "app/views/books/_post.html.erb" %>
+			</div>
+		</div>
+		<div class="col-lg-9 col-xs-9">
+			<h2>Users</h2>
+			<table class="table">
+				<tr>
+					<th>image</th>
+					<th>name</th>
+					<th></th>
+				</tr>
+				<% @users.each do |user| %>
+					<tr>
+						<th>
+							<%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+						</th>
+						<th>
+							<%= user.name %>
+						</th>
+						<th>
+							<%= link_to "Show", user_path(user) %>
+						</th>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
