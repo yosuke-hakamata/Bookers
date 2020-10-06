@@ -1,0 +1,21 @@
+<% if signed_in? %>
+	<% if @book.errors.any? %>
+	  <div class="alert alert-warning">
+	  	<h5>error!</h5>
+	    <ul>
+	      <% @book.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	  <% elsif @user.errors.any? %>
+	  	<div class="alert alert-warning">
+	  	<h5>error!</h5>
+	    <ul>
+	      <% @user.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+<% end %>
