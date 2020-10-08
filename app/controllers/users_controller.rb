@@ -21,10 +21,8 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	@book=Book.new
     if @user.update(user_params)
-    	flash[:success]="User was successfully updated"
-    	redirect_to user_path(@user)
+    	redirect_to user_path(@user), notice:'User was successfully updated'
     else
-    	flash.now[:danger]="error !"
     	render :edit
     end
   end
